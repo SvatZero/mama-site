@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-particles="on">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link id="theme-style" rel="stylesheet" href="css/theme-spring.css" />
 </head>
+
 <body>
   <div class="overlay" data-overlay></div>
 
@@ -29,28 +30,49 @@
       <a href="games.html" class="active">Игры</a>
       <a href="wishes.html">Поздравления</a>
     </nav>
+
+    <!-- Блок темы -->
+    <div class="card" style="margin-top:16px;">
+      <h2>Тема</h2>
+      <p style="margin:0;color:var(--muted);">
+        Сейчас: <b data-theme-label>Весна 🌷</b>
+      </p>
+      <a class="big-button" href="#" data-theme-toggle style="text-align:center;">
+        Переключить тему
+      </a>
+    </div>
   </aside>
 
   <main class="container">
     <header class="header">
-      <div style="display:flex; gap:10px; margin-left:auto;">
-  <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
-  <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
-</div>
       <button class="burger" data-menu-open aria-label="Открыть меню">
         <span></span>
       </button>
 
       <div class="brand">
         <h1>Игры</h1>
-        <p>Скоро добавим кроссворд/викторину</p>
+        <p>Скоро добавим викторину и кроссворд</p>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-left:auto;">
+        <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
+        <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
       </div>
     </header>
 
     <section class="card">
       <h2>Раздел в разработке</h2>
       <p style="margin:0;">
-        План: сначала простая викторина “Про маму”, потом кроссворд.
+        План: сначала простая викторина “Про маму” (5 вопросов), потом кроссворд.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Идеи мини-игр</h2>
+      <p style="margin:0;color:var(--muted);">
+        1) Викторина “Насколько ты знаешь маму?”<br/>
+        2) Кроссворд на 8–10 слов<br/>
+        3) “Угадай по фото” (детство/молодость)
       </p>
     </section>
 
@@ -61,5 +83,9 @@
 
   <script src="js/menu.js"></script>
   <script src="js/font.js"></script>
+  <script src="js/theme.js"></script>
+
+  <!-- вместо petals.js используем универсальные частицы -->
+  <script src="js/particles.js"></script>
 </body>
 </html>

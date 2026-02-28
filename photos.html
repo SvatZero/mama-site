@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Маме — Фото</title>
 
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/theme-spring.css" />
+</head>
+<body>
+  <div class="overlay" data-overlay></div>
+
+  <aside class="side" aria-label="Меню">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+      <div>
+        <div class="title">Навигация</div>
+        <div class="desc">Фото можно хранить на Яндекс.Диске</div>
+      </div>
+      <button class="burger" data-menu-close aria-label="Закрыть меню">
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О маме</a>
+      <a href="photos.html" class="active">Фото</a>
+      <a href="games.html">Игры</a>
+      <a href="wishes.html">Поздравления</a>
+    </nav>
+  </aside>
+
+  <main class="container">
+    <header class="header">
+      <button class="burger" data-menu-open aria-label="Открыть меню">
+        <span></span>
+      </button>
+
+      <div class="brand">
+        <h1>Фото</h1>
+        <p>Скоро добавим альбом и ссылку на архив</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Фотоархив</h2>
+      <p style="margin:0;color:var(--muted);">
+        Здесь будет кнопка “Открыть фотоальбом” (Яндекс.Диск по ссылке).
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p style="margin:0;">Вернуться: <a href="index.html">на главную</a></p>
+    </footer>
+  </main>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

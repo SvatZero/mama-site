@@ -1,1 +1,180 @@
+:root{
+  --bg: #fffdf8;
+  --text: #222;
+  --muted: #555;
+  --card: #ffffff;
+  --accent: #b85c5c;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+  --radius: 14px;
 
+  /* Доступность: крупный базовый размер */
+  --font: 20px;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin:0;
+  padding:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: var(--font);
+  line-height: 1.8;
+}
+
+a{ color: var(--accent); text-decoration: none; }
+a:focus{ outline: 3px solid rgba(184,92,92,.35); outline-offset: 2px; }
+
+.container{
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.brand{
+  display:flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand h1{
+  font-size: 1.35rem;
+  line-height:1.2;
+  margin: 0;
+}
+.brand p{
+  margin:0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.card{
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 14px;
+  margin: 14px 0;
+}
+
+.card h2{
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.big-button{
+  display:block;
+  width:100%;
+  padding: 14px 14px;
+  border-radius: 12px;
+  background: rgba(184,92,92,0.10);
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.footer{
+  margin: 28px 0 10px;
+  text-align:center;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* ---------- Бургер кнопка ---------- */
+.burger{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--card);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+
+.burger span{
+  display:block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+}
+.burger span::before,
+.burger span::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width: 18px;
+  height:2px;
+  background: var(--text);
+}
+.burger span::before{ top: -6px; }
+.burger span::after{ top: 6px; }
+
+/* ---------- Меню ---------- */
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.side{
+  position: fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width: 82%;
+  max-width: 360px;
+  background: var(--card);
+  box-shadow: 18px 0 40px rgba(0,0,0,0.18);
+  transform: translateX(-105%);
+  transition: transform .22s ease;
+  padding: 16px;
+}
+
+.side .title{
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+.side .desc{
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 14px;
+}
+
+.nav a{
+  display:block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  margin: 8px 0;
+  background: rgba(0,0,0,0.04);
+  font-weight: 650;
+}
+.nav a.active{
+  background: rgba(184,92,92,0.16);
+}
+
+/* Открытое состояние меню */
+.menu-open .overlay{
+  opacity: 1;
+  pointer-events: auto;
+}
+.menu-open .side{
+  transform: translateX(0);
+}
+
+/* Чуть меньше шрифт на очень узких экранах */
+@media (max-width: 360px){
+  html, body{ font-size: 18px; }
+}

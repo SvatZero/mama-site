@@ -1,1 +1,7 @@
-
+:root{
+  --bg: #f4f8ff;
+  --text: #1b2430;
+  --muted: #5b6b82;
+  --card: #ffffff;
+  --accent: #2f6fb6;
+}

@@ -261,3 +261,46 @@ a:focus{ outline: 3px solid rgba(184,92,92,.35); outline-offset: 2px; }
   height: 100% !important;
   z-index: 60 !important;
 }
+
+/* === Частицы (лепестки/снежинки) === */
+.particles{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle{
+  position: absolute;
+  top: -24px;
+  opacity: 0.35;
+  animation-name: particleFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Лепестки (весна) */
+.particle.petal{
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(192,75,107,0.65));
+  filter: blur(0.2px);
+}
+
+/* Снежинки (зима) — маленькие светлые кружки */
+.particle.snow{
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(160,200,255,0.65));
+  opacity: 0.45;
+  filter: blur(0.15px);
+}
+
+@keyframes particleFall{
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(var(--drift)) translateY(110vh) rotate(360deg); }
+}
+
+/* Контент выше частиц */
+.container{ position: relative; z-index: 1; }
+.overlay{ z-index: 50; }
+.side{ z-index: 60; }

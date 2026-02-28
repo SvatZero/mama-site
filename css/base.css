@@ -216,8 +216,14 @@ a:focus{ outline: 3px solid rgba(184,92,92,.35); outline-offset: 2px; }
   100% { transform: translateX(var(--drift)) translateY(110vh) rotate(360deg); }
 }
 
-/* чтобы контент был выше лепестков */
-.container, .side, .overlay{
+/* Слои: лепестки ниже, контент выше, меню/оверлей ещё выше */
+.container{
   position: relative;
   z-index: 1;
 }
+
+/* overlay и side уже position: fixed выше по файлу — НЕ трогаем position */
+.overlay{ z-index: 5; }
+.side{ z-index: 6; }
+
+.petals{ z-index: 0; }

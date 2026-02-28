@@ -190,3 +190,34 @@ a:focus{ outline: 3px solid rgba(184,92,92,.35); outline-offset: 2px; }
   cursor:pointer;
   font-weight: 800;
 }
+/* --- Лепестки (весна) --- */
+.petals{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* ниже контента */
+}
+
+.petal{
+  position: absolute;
+  top: -24px;
+  border-radius: 999px;
+  opacity: 0.35;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(192,75,107,0.6));
+  filter: blur(0.2px);
+  animation-name: petalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes petalFall{
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(var(--drift)) translateY(110vh) rotate(360deg); }
+}
+
+/* чтобы контент был выше лепестков */
+.container, .side, .overlay{
+  position: relative;
+  z-index: 1;
+}

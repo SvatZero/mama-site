@@ -63,95 +63,123 @@
 
     <section class="card">
       <p style="margin:0;">
-        Это карта нашей семьи: Мария → Наташа и Валя → дальше дети, коты и наша “пара” 🔒
+        Наша схема: <b>Мария</b> → <b>Наташа</b> и <b>Валя</b> → дальше дети, коты и “пара” 🔒
       </p>
     </section>
 
-    <!-- ДРЕВО (вертикальный прототип) -->
-    <section class="tree">
-      <!-- Уровень 1 -->
-      <div class="tree-level">
-        <button class="person root" data-person="maria">
-          <span class="avatar">М</span>
-          <span class="name">Мария</span>
-          <span class="role">корень семьи</span>
-        </button>
-      </div>
+    <!-- ДРЕВО (схема как в референсе: фиксированные ячейки + ветви) -->
+    <section class="tree-grid" aria-label="Схема семейного древа">
+      <!-- SVG-ветви -->
+      <svg class="tree-lines" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+        <!-- Мария -> (Наташа, Валя) -->
+        <path d="M500 95 V140" />
+        <path d="M250 140 H750" />
+        <path d="M250 140 V185" />
+        <path d="M750 140 V185" />
 
-      <div class="tree-connector"></div>
+        <!-- Наташа -> (Паша, Маша, Мура) -->
+        <path d="M250 285 V330" />
+        <path d="M130 330 H370" />
+        <path d="M130 330 V375" />
+        <path d="M250 330 V375" />
+        <path d="M370 330 V375" />
 
-      <!-- Уровень 2 -->
-      <div class="tree-level two">
-        <button class="person" data-person="natasha">
-          <span class="avatar">Н</span>
-          <span class="name">Наташа</span>
-          <span class="role">центр</span>
-        </button>
+        <!-- Валя -> Лива -->
+        <path d="M750 285 V375" />
 
-        <button class="person" data-person="valya">
-          <span class="avatar">В</span>
-          <span class="name">Валя</span>
-          <span class="role">ветка</span>
-        </button>
-      </div>
+        <!-- Паша + Полина (пара) -> Птичка -->
+        <path d="M250 475 V520" />
+        <path d="M250 520 V565" />
+      </svg>
 
-      <div class="tree-connector"></div>
+      <!-- Мария -->
+      <button class="person root pos-maria" data-person="maria">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/maria.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">М</span>
+        </span>
+        <span class="name">Мария</span>
+        <span class="role">корень семьи</span>
+      </button>
 
-      <!-- Уровень 3 -->
-      <div class="tree-level three">
-        <button class="person" data-person="pasha">
-          <span class="avatar">П</span>
-          <span class="name">Паша</span>
-          <span class="role">сын</span>
-        </button>
+      <!-- Наташа / Валя -->
+      <button class="person pos-natasha" data-person="natasha">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/natasha.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">Н</span>
+        </span>
+        <span class="name">Наташа</span>
+        <span class="role">центр</span>
+      </button>
 
-        <button class="person" data-person="masha">
-          <span class="avatar">М</span>
-          <span class="name">Маша</span>
-          <span class="role">дочка</span>
-        </button>
+      <button class="person pos-valya" data-person="valya">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/valya.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">В</span>
+        </span>
+        <span class="name">Валя</span>
+        <span class="role">сестра Наташи</span>
+      </button>
 
-        <button class="person" data-person="mura">
-          <span class="avatar">🐾</span>
-          <span class="name">Мура</span>
-          <span class="role">дочка-кошка</span>
-        </button>
+      <!-- Дети Наташи -->
+      <button class="person pos-pasha" data-person="pasha">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/pasha.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">П</span>
+        </span>
+        <span class="name">Паша</span>
+        <span class="role">сын</span>
+      </button>
 
-        <button class="person" data-person="liva">
-          <span class="avatar">🐾</span>
-          <span class="name">Лива</span>
-          <span class="role">дочка Вали</span>
-        </button>
-      </div>
+      <button class="person pos-masha" data-person="masha">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/masha.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">М</span>
+        </span>
+        <span class="name">Маша</span>
+        <span class="role">дочка</span>
+      </button>
 
-      <!-- ПАРА -->
-      <div class="pair-block">
-        <div class="tree-connector small"></div>
-        <div class="pair-row">
-          <button class="person" data-person="pasha">
-            <span class="avatar">П</span>
-            <span class="name">Паша</span>
-            <span class="role">сын</span>
-          </button>
+      <button class="person pos-mura" data-person="mura">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/mura.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">🐾</span>
+        </span>
+        <span class="name">Мура</span>
+        <span class="role">дочка-кошка</span>
+      </button>
 
-          <div class="lock" aria-label="пара">🔒</div>
+      <!-- Лива (дочка Вали) -->
+      <button class="person pos-liva" data-person="liva">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/liva.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">🐾</span>
+        </span>
+        <span class="name">Лива</span>
+        <span class="role">дочка Вали</span>
+      </button>
 
-          <button class="person" data-person="polina">
-            <span class="avatar">П</span>
-            <span class="name">Полина</span>
-            <span class="role">пара</span>
-          </button>
-        </div>
-        <div class="tree-connector small"></div>
+      <!-- Пара: Паша + Полина на одном уровне -->
+      <div class="lock pos-lock" aria-label="пара">🔒</div>
 
-        <div class="tree-level">
-          <button class="person" data-person="ptichka">
-            <span class="avatar">🐱</span>
-            <span class="name">Птичка</span>
-            <span class="role">кошка</span>
-          </button>
-        </div>
-      </div>
+      <button class="person pos-polina" data-person="polina">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/polina.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">П</span>
+        </span>
+        <span class="name">Полина</span>
+        <span class="role">пара</span>
+      </button>
+
+      <!-- Птичка ниже пары -->
+      <button class="person pos-ptichka" data-person="ptichka">
+        <span class="avatar">
+          <img class="avatar-img" src="assets/avatars/ptichka.jpg" alt="" loading="lazy" onerror="this.remove()" />
+          <span class="avatar-fallback">🐱</span>
+        </span>
+        <span class="name">Птичка</span>
+        <span class="role">кошка</span>
+      </button>
     </section>
 
     <footer class="footer">

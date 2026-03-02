@@ -60,13 +60,22 @@
         <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
       </div>
     </header>
-
     <section class="card">
       <p style="margin:0;">
         Наша схема: <b>Мария</b> → <b>Наташа</b> и <b>Валя</b> → дальше дети, коты и “пара” 🔒
       </p>
     </section>
 
+    <section class="card"     style="margin-top:12px;">
+      <div style="display:flex; gap:10px;  flex-wrap:wrap; align-items:center;">
+        <b>Управление схемой:</b>
+        <button class="fontbtn" type="button" data-zoom-out aria-label="Уменьшить схему">−</button>
+        <button class="fontbtn" type="button" data-zoom-in aria-label="Увеличить схему">+</button>
+        <button class="fontbtn" type="button" data-zoom-reset aria-label="Сбросить масштаб">1:1</button>
+      </div>
+    </section>
+
+<div class="tree-viewport" aria-label="Прокручиваемая область древа">
     <!-- ДРЕВО (схема как в референсе: фиксированные ячейки + ветви) -->
     <section class="tree-grid" aria-label="Схема семейного древа">
       <!-- SVG-ветви -->
@@ -181,7 +190,7 @@
         <span class="role">кошка</span>
       </button>
     </section>
-
+    </div>
     <footer class="footer">
       <p style="margin:0;">Вернуться: <a href="index.html">на главную</a></p>
     </footer>

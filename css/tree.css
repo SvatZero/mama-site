@@ -1,0 +1,171 @@
+/* Страница дерева — чуть спокойнее */
+.tree{
+  margin: 16px 0 30px;
+}
+
+/* уровни */
+.tree-level{
+  display:flex;
+  justify-content:center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.tree-level.two{ gap: 18px; }
+.tree-level.three{ gap: 12px; }
+
+/* соединитель (упрощённо) */
+.tree-connector{
+  height: 18px;
+  margin: 10px auto;
+  width: 2px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 999px;
+}
+.tree-connector.small{
+  height: 12px;
+  margin: 8px auto;
+}
+
+/* карточка персонажа */
+.person{
+  width: 150px;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+  padding: 12px 10px;
+  cursor:pointer;
+  display:flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items:center;
+  text-align:center;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.person:active{
+  transform: scale(0.98);
+}
+
+.person:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+}
+
+.person .avatar{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+  background: rgba(0,0,0,0.05);
+}
+
+.person .name{
+  font-weight: 850;
+}
+
+.person .role{
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+/* корень чуть выделим */
+.person.root{
+  border-color: rgba(0,0,0,0.14);
+}
+
+/* блок пары */
+.pair-block{
+  margin-top: 20px;
+}
+
+.pair-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lock{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Модалка */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 200;
+}
+
+.modal.open{ display:block; }
+
+.modal-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.modal-card{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 560px);
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 14px;
+}
+
+.modal-head{
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-name{
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
+.modal-role{
+  color: var(--muted);
+}
+
+.modal-close{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.04);
+  cursor:pointer;
+  font-weight: 900;
+}
+
+.modal-facts ul{
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+}
+
+.modal-quote{
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.04);
+  color: var(--muted);
+  font-style: italic;
+}

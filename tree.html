@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru" data-particles="on">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Маме — Семейное древо</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link id="theme-style" rel="stylesheet" href="css/theme-spring.css" />
+  <link rel="stylesheet" href="css/tree.css" />
+</head>
+
+<body>
+  <div class="overlay" data-overlay></div>
+
+  <aside class="side" aria-label="Меню">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+      <div>
+        <div class="title">Навигация</div>
+        <div class="desc">Семейное древо и маленькие истории</div>
+      </div>
+      <button class="burger" data-menu-close aria-label="Закрыть меню">
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О маме</a>
+      <a href="photos.html">Фото</a>
+      <a href="games.html">Игры</a>
+      <a href="wishes.html">Поздравления</a>
+      <a href="tree.html" class="active">Семейное древо</a>
+    </nav>
+
+    <div class="card" style="margin-top:16px;">
+      <h2>Тема</h2>
+      <p style="margin:0;color:var(--muted);">
+        Сейчас: <b data-theme-label>Весна 🌷</b>
+      </p>
+      <a class="big-button" href="#" data-theme-toggle style="text-align:center;">
+        Переключить тему
+      </a>
+    </div>
+  </aside>
+
+  <main class="container">
+    <header class="header">
+      <button class="burger" data-menu-open aria-label="Открыть меню">
+        <span></span>
+      </button>
+
+      <div class="brand">
+        <h1>Семейное древо</h1>
+        <p>Нажми на карточку — откроется мини-история</p>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-left:auto;">
+        <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
+        <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <p style="margin:0;">
+        Это карта нашей семьи: Мария → Наташа и Валя → дальше дети, коты и наша “пара” 🔒
+      </p>
+    </section>
+
+    <!-- ДРЕВО (вертикальный прототип) -->
+    <section class="tree">
+      <!-- Уровень 1 -->
+      <div class="tree-level">
+        <button class="person root" data-person="maria">
+          <span class="avatar">М</span>
+          <span class="name">Мария</span>
+          <span class="role">корень семьи</span>
+        </button>
+      </div>
+
+      <div class="tree-connector"></div>
+
+      <!-- Уровень 2 -->
+      <div class="tree-level two">
+        <button class="person" data-person="natasha">
+          <span class="avatar">Н</span>
+          <span class="name">Наташа</span>
+          <span class="role">центр</span>
+        </button>
+
+        <button class="person" data-person="valya">
+          <span class="avatar">В</span>
+          <span class="name">Валя</span>
+          <span class="role">ветка</span>
+        </button>
+      </div>
+
+      <div class="tree-connector"></div>
+
+      <!-- Уровень 3 -->
+      <div class="tree-level three">
+        <button class="person" data-person="pasha">
+          <span class="avatar">П</span>
+          <span class="name">Паша</span>
+          <span class="role">сын</span>
+        </button>
+
+        <button class="person" data-person="masha">
+          <span class="avatar">М</span>
+          <span class="name">Маша</span>
+          <span class="role">дочка</span>
+        </button>
+
+        <button class="person" data-person="mura">
+          <span class="avatar">🐾</span>
+          <span class="name">Мура</span>
+          <span class="role">дочка-кошка</span>
+        </button>
+
+        <button class="person" data-person="liva">
+          <span class="avatar">🐾</span>
+          <span class="name">Лива</span>
+          <span class="role">дочка Вали</span>
+        </button>
+      </div>
+
+      <!-- ПАРА -->
+      <div class="pair-block">
+        <div class="tree-connector small"></div>
+        <div class="pair-row">
+          <button class="person" data-person="pasha">
+            <span class="avatar">П</span>
+            <span class="name">Паша</span>
+            <span class="role">сын</span>
+          </button>
+
+          <div class="lock" aria-label="пара">🔒</div>
+
+          <button class="person" data-person="polina">
+            <span class="avatar">П</span>
+            <span class="name">Полина</span>
+            <span class="role">пара</span>
+          </button>
+        </div>
+        <div class="tree-connector small"></div>
+
+        <div class="tree-level">
+          <button class="person" data-person="ptichka">
+            <span class="avatar">🐱</span>
+            <span class="name">Птичка</span>
+            <span class="role">кошка</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p style="margin:0;">Вернуться: <a href="index.html">на главную</a></p>
+    </footer>
+  </main>
+
+  <!-- МОДАЛЬНОЕ ОКНО -->
+  <div class="modal" data-modal aria-hidden="true">
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Карточка персонажа">
+      <div class="modal-head">
+        <div>
+          <div class="modal-name" data-modal-name>Имя</div>
+          <div class="modal-role" data-modal-role>роль</div>
+        </div>
+        <button class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-facts" data-modal-facts></div>
+        <div class="modal-quote" data-modal-quote></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/menu.js"></script>
+  <script src="js/font.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/tree.js"></script>
+</body>
+</html>

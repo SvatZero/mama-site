@@ -304,3 +304,14 @@ a:focus{ outline: 3px solid rgba(184,92,92,.35); outline-offset: 2px; }
 .container{ position: relative; z-index: 1; }
 .overlay{ z-index: 50; }
 .side{ z-index: 60; }
+
+/* Меню прокручиваемое, чтобы пункты не обрезались */
+.side{
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Чуть больше отступ снизу, чтобы последняя кнопка не пряталась */
+.side .nav{
+  padding-bottom: 14px;
+}

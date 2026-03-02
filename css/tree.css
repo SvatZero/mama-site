@@ -190,3 +190,33 @@
     overflow-x: auto;
   }
 }
+/* ====== ВЬЮПОРТ ДЛЯ ТЕЛЕФОНА: дерево как карта ====== */
+.tree-viewport{
+  width: 100%;
+  overflow: auto;              /* можно скроллить */
+  -webkit-overflow-scrolling: touch;
+  border-radius: 18px;
+}
+
+/* Полотно фиксированной ширины: чтобы не обрезалось */
+.tree-grid{
+  width: 1000px;               /* соответствует viewBox SVG */
+  max-width: none;
+  transform-origin: 0 0;       /* масштабируем от левого верхнего */
+  touch-action: pan-x pan-y;   /* не мешаем прокрутке пальцем */
+}
+
+/* Масштаб через CSS-переменную */
+.tree-viewport .tree-grid{
+  transform: scale(var(--treeZoom, 1));
+}
+
+/* На широких экранах пусть будет по центру и без горизонтального скролла */
+@media (min-width: 900px){
+  .tree-viewport{
+    overflow: visible;
+  }
+  .tree-grid{
+    margin: 0 auto;
+  }
+}

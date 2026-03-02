@@ -1,33 +1,32 @@
-/* Страница дерева — чуть спокойнее */
-.tree{
+/* ====== СЕТКА ДРЕВА (как схема) ====== */
+.tree-grid{
+  position: relative;
   margin: 16px 0 30px;
+  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  padding: 18px 12px 22px;
+  overflow: hidden;
+  min-height: 720px;
 }
 
-/* уровни */
-.tree-level{
-  display:flex;
-  justify-content:center;
-  gap: 14px;
-  flex-wrap: wrap;
+/* линии позади карточек */
+.tree-lines{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.tree-lines path{
+  stroke: rgba(0,0,0,0.18);
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.tree-level.two{ gap: 18px; }
-.tree-level.three{ gap: 12px; }
-
-/* соединитель (упрощённо) */
-.tree-connector{
-  height: 18px;
-  margin: 10px auto;
-  width: 2px;
-  background: rgba(0,0,0,0.12);
-  border-radius: 999px;
-}
-.tree-connector.small{
-  height: 12px;
-  margin: 8px auto;
-}
-
-/* карточка персонажа */
+/* карточки */
 .person{
   width: 150px;
   background: var(--card);
@@ -42,34 +41,15 @@
   align-items:center;
   text-align:center;
   transition: transform .12s ease, box-shadow .12s ease;
+
+  position: absolute;
+  z-index: 2;
 }
 
-.person:active{
-  transform: scale(0.98);
-}
-
+.person:active{ transform: scale(0.98); }
 .person:hover{
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(0,0,0,0.09);
-}
-
-.person .avatar{
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display:grid;
-  place-items:center;
-  font-weight: 900;
-  background: rgba(0,0,0,0.05);
-}
-
-.person .name{
-  font-weight: 850;
-}
-
-.person .role{
-  color: var(--muted);
-  font-size: .92rem;
 }
 
 /* корень чуть выделим */
@@ -77,37 +57,71 @@
   border-color: rgba(0,0,0,0.14);
 }
 
-/* блок пары */
-.pair-block{
-  margin-top: 20px;
+/* аватар: фото или fallback */
+.avatar{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  background: rgba(0,0,0,0.05);
+  overflow: hidden;
+  position: relative;
+}
+.avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+.avatar-fallback{
+  position: absolute;
+  inset: 0;
+  display:grid;
+  place-items:center;
+  font-weight: 900;
 }
 
-.pair-row{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+.name{ font-weight: 850; }
+.role{ color: var(--muted); font-size: .92rem; }
 
+/* позиции (под viewBox 1000x700) */
+.pos-maria   { left: 50%; top: 30px;  transform: translateX(-50%); }
+
+.pos-natasha { left: 25%; top: 220px; transform: translateX(-50%); }
+.pos-valya   { left: 75%; top: 220px; transform: translateX(-50%); }
+
+.pos-pasha   { left: 13%; top: 410px; transform: translateX(-50%); }
+.pos-masha   { left: 25%; top: 410px; transform: translateX(-50%); }
+.pos-mura    { left: 37%; top: 410px; transform: translateX(-50%); }
+
+.pos-liva    { left: 75%; top: 410px; transform: translateX(-50%); }
+
+.pos-lock    { left: 25%; top: 520px; transform: translateX(-50%); }
+
+.pos-polina  { left: 37%; top: 505px; transform: translateX(-50%); }
+.pos-ptichka { left: 31%; top: 600px; transform: translateX(-50%); }
+
+/* замочек */
 .lock{
+  position: absolute;
   width: 44px;
   height: 44px;
   border-radius: 14px;
   display:grid;
   place-items:center;
   background: rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.10);
+  z-index: 3;
 }
 
-/* Модалка */
+/* ====== МОДАЛКА ====== */
 .modal{
   position: fixed;
   inset: 0;
   display: none;
   z-index: 200;
 }
-
 .modal.open{ display:block; }
 
 .modal-backdrop{
@@ -168,4 +182,11 @@
   background: rgba(0,0,0,0.04);
   color: var(--muted);
   font-style: italic;
+}
+
+/* На узких экранах: схема остаётся, но можно горизонтально скроллить */
+@media (max-width: 650px){
+  .tree-grid{
+    overflow-x: auto;
+  }
 }

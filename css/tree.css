@@ -85,25 +85,42 @@
 .name{ font-weight: 850; }
 .role{ color: var(--muted); font-size: .92rem; }
 
-/* позиции (под viewBox 1000x700) */
+
+
+/* позиции (под viewBox 1000x700) — раздвинули карточки + пара Полина/Паша */
 .pos-maria   { left: 50%; top: 30px;  transform: translateX(-50%); }
 
-.pos-natasha { left: 25%; top: 220px; transform: translateX(-50%); }
-.pos-valya   { left: 75%; top: 220px; transform: translateX(-50%); }
+.pos-natasha { left: 45%; top: 220px; transform: translateX(-50%); }
+.pos-valya   { left: 82%; top: 220px; transform: translateX(-50%); }
 
-.pos-pasha   { left: 13%; top: 410px; transform: translateX(-50%); }
-.pos-masha   { left: 25%; top: 410px; transform: translateX(-50%); }
-.pos-mura    { left: 37%; top: 410px; transform: translateX(-50%); }
+/* дети Наташи */
+.pos-pasha   { left: 36%; top: 410px; transform: translateX(-50%); }
+.pos-masha   { left: 54%; top: 410px; transform: translateX(-50%); }
+.pos-mura    { left: 72%; top: 410px; transform: translateX(-50%); }
 
-.pos-liva    { left: 75%; top: 410px; transform: translateX(-50%); }
+/* ветка Вали */
+.pos-liva    { left: 82%; top: 410px; transform: translateX(-50%); }
 
-.pos-lock    { left: 25%; top: 520px; transform: translateX(-50%); }
+/* пара (Полина слева от Паши) */
+.pos-polina  { left: 18%; top: 410px; transform: translateX(-50%); }
+.pos-heart   { left: 27%; top: 360px; transform: translateX(-50%); }
 
-.pos-polina  { left: 37%; top: 505px; transform: translateX(-50%); }
-.pos-ptichka { left: 31%; top: 600px; transform: translateX(-50%); }
+/* Птичка ниже пары (по центру между ними) */
+.pos-ptichka { left: 27%; top: 600px; transform: translateX(-50%); }
 
 /* замочек */
 .lock{
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.10);
+  z-index: 3;
+}
+.heart{
   position: absolute;
   width: 44px;
   height: 44px;

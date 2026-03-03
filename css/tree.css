@@ -46,10 +46,21 @@
   z-index: 2;
 }
 
-.person:active{ transform: scale(0.98); }
-.person:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+./* hover-эффект без transform, чтобы не ломать translateX(-50%) у pos-* */
+.person{
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .person:hover{
+    box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+    border-color: rgba(0,0,0,0.14);
+  }
+}
+
+/* активное нажатие тоже без transform */
+.person:active{
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
 }
 
 /* корень чуть выделим */

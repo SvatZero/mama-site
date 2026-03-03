@@ -250,3 +250,20 @@
     margin: 0 auto;
   }
 }
+
+/* ====== СТАТИЧНЫЕ КАРТОЧКИ: без отъезда/подпрыгивания ====== */
+.person{
+  transition: none !important;
+}
+
+/* На ПК убираем любые hover-движения (если где-то остались) */
+@media (hover:hover) and (pointer:fine){
+  .person:hover{
+    transform: translateX(-50%) !important; /* сохраняем позиционирование */
+  }
+}
+
+/* На телефоне/клике убираем любые active-движения */
+.person:active{
+  transform: translateX(-50%) !important;   /* сохраняем позиционирование */
+}

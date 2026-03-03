@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Маме — Игры</title>
+  <title>Маме — Memory</title>
 
   <link rel="stylesheet" href="css/base.css" />
   <link id="theme-style" rel="stylesheet" href="css/theme-spring.css" />
+
+  <!-- Стили именно для игры -->
+  <link rel="stylesheet" href="css/memory.css" />
 </head>
 
 <body>
@@ -16,7 +19,7 @@
     <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
       <div>
         <div class="title">Навигация</div>
-        <div class="desc">Кроссворд, викторина, мини-игры</div>
+        <div class="desc">Memory, викторина, мини-игры</div>
       </div>
       <button class="burger" data-menu-close aria-label="Закрыть меню">
         <span></span>
@@ -51,42 +54,47 @@
       </button>
 
       <div class="brand">
-        <h1>Игры</h1>
-        <p>Скоро добавим викторину и кроссворд</p>
+        <h1>Memory</h1>
+        <p>Найди 10 пар картинок (20 карточек)</p>
       </div>
 
-      <div style="display:flex; gap:10px; margin-left:auto;">
+      <div style="display:flex; gap:10px; margin-left:auto; align-items:center; flex-wrap:wrap;">
+        <div class="memory-pill">Ходы: <span id="moves">0</span></div>
+        <button class="memory-btn" id="restart" type="button">Сначала</button>
         <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
         <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
       </div>
     </header>
 
     <section class="card">
-      <h2>Раздел в разработке</h2>
-      <p style="margin:0;">
-        План: сначала простая викторина “Про маму” (5 вопросов), потом кроссворд.
-      </p>
-    </section>
+      <p id="hint" class="memory-hint">Открой две карточки 🙂</p>
 
-    <section class="card">
-      <h2>Идеи мини-игр</h2>
-      <p style="margin:0;color:var(--muted);">
-        1) Викторина “Насколько ты знаешь маму?”<br/>
-        2) Кроссворд на 8–10 слов<br/>
-        3) “Угадай по фото” (детство/молодость)
-      </p>
+      <!-- Поле 4×5 -->
+      <div id="board" class="memory-board" aria-label="Игровое поле"></div>
     </section>
 
     <footer class="footer">
-      <p style="margin:0;">Вернуться: <a href="index.html">на главную</a></p>
+      <p style="margin:0;">Вернуться: <a href="games.html">к выбору игр</a></p>
     </footer>
+
+    <!-- Победа -->
+    <dialog id="win" class="memory-modal">
+      <h2 class="memory-win">Ураа, вы победили! 🎉</h2>
+      <p id="winText" style="margin:0;color:var(--muted);"></p>
+
+      <div class="memory-actions">
+        <button class="memory-btn" id="playAgain" type="button">Сыграть ещё раз</button>
+        <a class="memory-btn ghost" href="games.html">К выбору игр</a>
+      </div>
+    </dialog>
   </main>
 
   <script src="js/menu.js"></script>
   <script src="js/font.js"></script>
   <script src="js/theme.js"></script>
-
-  <!-- вместо petals.js используем универсальные частицы -->
   <script src="js/particles.js"></script>
+
+  <!-- Логика игры -->
+  <script src="js/memory.js" defer></script>
 </body>
 </html>

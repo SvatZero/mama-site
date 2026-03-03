@@ -1,7 +1,6 @@
- // БАЗА: 20 уникальных картинок (img01..img20)
-// В каждом раунде берём 10 случайных, удваиваем => 20 карточек => перемешиваем
-const BASE_SIZE = 20;
-const PAIRS_PER_GAME = 10;
+// Настройки базы и раунда
+const BASE_SIZE = 20;        // в папке лежит img01..img20
+const PAIRS_PER_GAME = 10;   // на раунд берём 10 случайных => 20 карточек
 
 const IMG_DIR = "assets/memory/cards/";
 const PLACEHOLDER = IMG_DIR + "placeholder.jpg";
@@ -54,7 +53,6 @@ function makeDeck(){
   const base = buildBase();
   const chosen = pickRandom(base, PAIRS_PER_GAME); // 10 случайных из 20
 
-  // удваиваем => пары
   const doubled = chosen.flatMap(item => ([
     { ...item, key: item.id + "-a" },
     { ...item, key: item.id + "-b" },
@@ -70,7 +68,7 @@ function resetState(){
   moves = 0;
   matchedPairs = 0;
   movesEl.textContent = "0";
-  hintEl.textContent = "";
+  hintEl.textContent = "Открой две карточки 🙂";
 }
 
 function render(){
@@ -80,15 +78,14 @@ function render(){
   deck.forEach(card => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "card";
+    btn.className = "memory-card";
     btn.dataset.id = card.id;
     btn.dataset.key = card.key;
-    btn.setAttribute("aria-label", `Карточка: ${card.name}`);
 
     btn.innerHTML = `
-      <div class="inner">
-        <div class="face back">🦆</div>
-        <div class="face front">
+      <div class="memory-inner">
+        <div class="memory-face memory-back">🦆</div>
+        <div class="memory-face memory-front">
           <img alt="${card.name}" loading="lazy">
         </div>
       </div>
@@ -97,7 +94,7 @@ function render(){
     const img = btn.querySelector("img");
     img.src = card.src;
 
-    // Фоллбек: если картинок ещё нет — показываем placeholder
+    // Если реальных картинок ещё нет — используем заглушку
     img.onerror = () => { img.src = PLACEHOLDER; };
 
     btn.addEventListener("click", () => onFlip(btn, card));
@@ -109,10 +106,10 @@ function render(){
 
 function onFlip(node, card){
   if (locked) return;
-  if (node.classList.contains("flipped")) return;
-  if (node.classList.contains("matched")) return;
+  if (node.classList.contains("is-flipped")) return;
+  if (node.classList.contains("is-matched")) return;
 
-  node.classList.add("flipped");
+  node.classList.add("is-flipped");
 
   if (!first){
     first = node;
@@ -122,6 +119,7 @@ function onFlip(node, card){
 
   second = node;
   locked = true;
+
   moves += 1;
   movesEl.textContent = String(moves);
 
@@ -129,10 +127,10 @@ function onFlip(node, card){
 
   if (same){
     // Пара найдена
-    first.classList.remove("flipped");
-    second.classList.remove("flipped");
-    first.classList.add("matched");
-    second.classList.add("matched");
+    first.classList.remove("is-flipped");
+    second.classList.remove("is-flipped");
+    first.classList.add("is-matched");
+    second.classList.add("is-matched");
 
     matchedPairs += 1;
     hintEl.textContent = "Пара найдена ✅";
@@ -145,16 +143,16 @@ function onFlip(node, card){
       if (matchedPairs === PAIRS_PER_GAME){
         winText.textContent = `Ходы: ${moves}.`;
         if (winDlg?.showModal) winDlg.showModal();
-        else alert("Ураа, вы победили!");
+        else alert("Ураа, вы победили! 🎉");
       }
     }, 220);
 
   } else {
-    // Не совпало — плавно закрываем обратно
+    // Не совпало — закрываем обратно с анимацией
     hintEl.textContent = "Не совпало 🙂";
     setTimeout(() => {
-      first.classList.remove("flipped");
-      second.classList.remove("flipped");
+      first.classList.remove("is-flipped");
+      second.classList.remove("is-flipped");
       first = null;
       second = null;
       locked = false;

@@ -1,109 +1,82 @@
-:root{
-  --card: rgba(255,255,255,.10);
-  --ring: rgba(255,255,255,.18);
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.68);
-}
 
-.wrap{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 18px 14px 28px;
-  color: var(--text);
-}
+/* Только для Memory, чтобы не конфликтовать с base.css */
 
-.top{
-  display:flex;
-  gap: 12px;
-  align-items:flex-end;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-h1{ margin:0; font-size: 28px; }
-.sub{ margin:6px 0 0; color: var(--muted); }
-
-.stats{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.pill{
+.memory-pill{
   display:inline-flex;
   gap:8px;
   align-items:center;
   padding: 10px 12px;
   border-radius: 999px;
-  background: var(--card);
-  border: 1px solid var(--ring);
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
 }
 
-.btn{
+.memory-btn{
   padding: 10px 14px;
   border-radius: 12px;
   background: rgba(255,255,255,.14);
-  border: 1px solid var(--ring);
-  color: var(--text);
-  cursor:pointer;
-  text-decoration:none;
+  border: 1px solid rgba(255,255,255,.18);
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
   display:inline-flex;
   align-items:center;
   justify-content:center;
 }
-.btn.ghost{ background: transparent; }
 
-.hint{
-  margin: 12px 0 10px;
-  color: var(--muted);
-  min-height: 20px;
+.memory-btn.ghost{
+  background: transparent;
 }
 
-/* ВАЖНО: фиксируем 4 колонки и делаем 5 рядов по факту (20 карт) */
-.board{
+.memory-hint{
+  margin: 0 0 10px;
+  color: var(--muted);
+  min-height: 22px;
+}
+
+/* Поле: фикс 4 колонки = 20 карточек будут 5 рядов */
+.memory-board{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 10px;
   border-radius: 18px;
   background: rgba(255,255,255,.06);
-  border: 1px solid var(--ring);
+  border: 1px solid rgba(255,255,255,.18);
 }
 
-/* Карта */
-.card{
+/* Карточка */
+.memory-card{
   position:relative;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
-  border: 1px solid var(--ring);
+  border: 1px solid rgba(255,255,255,.18);
   background: rgba(255,255,255,.08);
   overflow:hidden;
   padding:0;
   cursor:pointer;
-
   perspective: 900px;
 }
 
-.card:focus-visible{
+.memory-card:focus-visible{
   outline: 2px solid rgba(255,255,255,.35);
   outline-offset: 2px;
 }
 
-/* 3D-флип */
-.inner{
+/* 3D флип */
+.memory-inner{
   position:absolute;
   inset:0;
   transform-style: preserve-3d;
   transition: transform .28s ease;
 }
 
-.card.flipped .inner,
-.card.matched .inner{
+.memory-card.is-flipped .memory-inner,
+.memory-card.is-matched .memory-inner{
   transform: rotateY(180deg);
 }
 
-.face{
+.memory-face{
   position:absolute;
   inset:0;
   backface-visibility: hidden;
@@ -113,17 +86,17 @@ h1{ margin:0; font-size: 28px; }
 }
 
 /* Рубашка */
-.back{
+.memory-back{
   font-size: 30px;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.85);
 }
 
 /* Лицо */
-.front{
+.memory-front{
   transform: rotateY(180deg);
 }
 
-.front img{
+.memory-front img{
   width:100%;
   height:100%;
   object-fit:cover;
@@ -131,29 +104,32 @@ h1{ margin:0; font-size: 28px; }
 }
 
 /* Найденная пара */
-.card.matched{
+.memory-card.is-matched{
   cursor: default;
   border-color: rgba(255,255,255,.35);
   box-shadow: 0 0 0 2px rgba(255,255,255,.08) inset;
 }
 
 /* Модалка победы */
-.modal{
+.memory-modal{
   border:none;
   border-radius: 18px;
   padding: 18px 16px;
   background: rgba(20, 24, 48, .98);
-  color: var(--text);
-  max-width: 520px;
+  color: inherit;
+  max-width: 560px;
 }
-.modal::backdrop{ background: rgba(0,0,0,.6); }
 
-.winTitle{
+.memory-modal::backdrop{
+  background: rgba(0,0,0,.6);
+}
+
+.memory-win{
   margin: 0 0 8px;
-  font-size: 26px;
+  font-size: 30px; /* “большая яркая надпись” */
 }
 
-.modal-actions{
+.memory-actions{
   display:flex;
   gap:10px;
   justify-content:flex-end;
@@ -161,8 +137,7 @@ h1{ margin:0; font-size: 28px; }
   flex-wrap:wrap;
 }
 
-/* Чуть компактнее на узких экранах */
 @media (max-width: 360px){
-  .board{ gap: 8px; padding: 8px; }
-  .btn{ padding: 9px 12px; }
+  .memory-board{ gap: 8px; padding: 8px; }
+  .memory-btn{ padding: 9px 12px; }
 }

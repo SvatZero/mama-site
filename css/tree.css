@@ -93,7 +93,7 @@
 .pos-heart-mv  { left: 50%; top: 58px;  transform: translateX(-50%); }
 
 .pos-natasha { left: 45%; top: 220px; transform: translateX(-50%); }
-.pos-valya   { left: 82%; top: 220px; transform: translateX(-50%); }
+.pos-valya   { left: 90%; top: 220px; transform: translateX(-50%); }
 
 /* дети Наташи */
 .pos-pasha   { left: 36%; top: 410px; transform: translateX(-50%); }
@@ -101,7 +101,7 @@
 .pos-mura    { left: 72%; top: 410px; transform: translateX(-50%); }
 
 /* ветка Вали */
-.pos-liva    { left: 82%; top: 410px; transform: translateX(-50%); }
+.pos-liva    { left: 90%; top: 410px; transform: translateX(-50%); }
 
 /* пара (Полина слева от Паши) */
 .pos-polina  { left: 18%; top: 410px; transform: translateX(-50%); }

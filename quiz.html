@@ -1,1 +1,102 @@
-a
+<!DOCTYPE html>
+<html lang="ru" data-particles="on">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Маме — Викторина</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link id="theme-style" rel="stylesheet" href="css/theme-spring.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
+</head>
+
+<body>
+  <div class="overlay" data-overlay></div>
+
+  <aside class="side" aria-label="Меню">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+      <div>
+        <div class="title">Навигация</div>
+        <div class="desc">Викторина “Как хорошо ты знаешь маму?”</div>
+      </div>
+      <button class="burger" data-menu-close aria-label="Закрыть меню">
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="tree.html">Семейное древо</a>
+      <a href="about.html">О маме</a>
+      <a href="photos.html">Фото</a>
+      <a href="games.html" class="active">Игры</a>
+      <a href="wishes.html">Поздравления</a>
+    </nav>
+
+    <div class="card" style="margin-top:16px;">
+      <h2>Тема</h2>
+      <p style="margin:0;color:var(--muted);">
+        Сейчас: <b data-theme-label>Весна 🌷</b>
+      </p>
+      <a class="big-button" href="#" data-theme-toggle style="text-align:center;">
+        Переключить тему
+      </a>
+    </div>
+  </aside>
+
+  <main class="container">
+    <header class="header">
+      <button class="burger" data-menu-open aria-label="Открыть меню">
+        <span></span>
+      </button>
+
+      <div class="brand">
+        <h1>Викторина</h1>
+        <p>Как хорошо ты знаешь маму? (варианты ответов ниже)</p>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-left:auto; align-items:center; flex-wrap:wrap;">
+        <div class="quiz-pill">Отвечено: <span id="answered">0</span>/<span id="total">0</span></div>
+        <button class="quiz-btn" id="reset" type="button">Сбросить</button>
+        <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
+        <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <p class="quiz-hint" id="hint">Выбирай вариант — он подсветится (зелёный/красный).</p>
+
+      <div id="quizList" class="quiz-list"></div>
+    </section>
+
+    <section class="card quiz-result" id="result" hidden>
+      <h2 style="margin-top:0;">Результат</h2>
+
+      <div class="quiz-score">
+        <div class="quiz-big" id="percent">0%</div>
+        <div>
+          <div class="quiz-rank" id="rankTitle">—</div>
+          <div class="quiz-muted" id="rankText">—</div>
+          <div class="quiz-muted" id="statsText" style="margin-top:8px;">—</div>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button class="quiz-btn" id="playAgain" type="button">Сыграть ещё раз</button>
+        <a class="quiz-btn ghost" href="games.html">К выбору игр</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p style="margin:0;">Вернуться: <a href="games.html">к выбору игр</a></p>
+    </footer>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/font.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/particles.js"></script>
+
+  <script src="js/quiz.js" defer></script>
+</body>
+</html>

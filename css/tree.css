@@ -88,7 +88,9 @@
 
 
 /* позиции (под viewBox 1000x700) — раздвинули карточки + пара Полина/Паша */
-.pos-maria   { left: 50%; top: 30px;  transform: translateX(-50%); }
+.pos-maria     { left: 42%; top: 30px;  transform: translateX(-50%); }
+.pos-vladimir  { left: 58%; top: 30px;  transform: translateX(-50%); }
+.pos-heart-mv  { left: 50%; top: 58px;  transform: translateX(-50%); }
 
 .pos-natasha { left: 45%; top: 220px; transform: translateX(-50%); }
 .pos-valya   { left: 82%; top: 220px; transform: translateX(-50%); }

@@ -8,6 +8,7 @@
   const quoteEl = modal.querySelector("[data-modal-quote]");
 
   const closeEls = document.querySelectorAll("[data-modal-close]");
+  const modalImg = document.querySelector("[data-modal-img]");
 
   const DATA = {
     maria: {

@@ -119,7 +119,7 @@
 .pos-heart   { left: 27%; top: 360px; transform: translateX(-50%); }
 
 /* Птичка ниже пары (по центру между ними) */
-.pos-ptichka { left: 27%; top: 600px; transform: translateX(-50%); }
+.pos-ptichka { left: 27%; top: 650px; transform: translateX(-50%); }
 
 /* замочек */
 .lock{

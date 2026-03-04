@@ -6,9 +6,9 @@
   const roleEl = modal.querySelector("[data-modal-role]");
   const factsEl = modal.querySelector("[data-modal-facts]");
   const quoteEl = modal.querySelector("[data-modal-quote]");
+  const modalImg = modal.querySelector("[data-modal-img]"); // ✅ важно: ищем внутри модалки
 
   const closeEls = document.querySelectorAll("[data-modal-close]");
-  const modalImg = document.querySelector("[data-modal-img]");
 
   const DATA = {
     maria: {
@@ -22,17 +22,17 @@
       ],
       quote: "“Еще будешь кушать?”"
     },
-   vladimir: {
-     name: "Владимир",
-     role: "дедушка, папа.",
-     facts: [
-       "Дедушка в нашей семейной истории.",
-       "Обожал книги, огромная личная библиотека.",
-       "Любил рассказывать сюжеты прочитанных книг своим дочкам.",
-       "Годы жизни: 1 августа 1953 г. - 20 декабря 2000 г."
-     ],
-     quote: "🕊️"
-   },
+    vladimir: {
+      name: "Владимир",
+      role: "дедушка, папа.",
+      facts: [
+        "Дедушка в нашей семейной истории.",
+        "Обожал книги, огромная личная библиотека.",
+        "Любил рассказывать сюжеты прочитанных книг своим дочкам.",
+        "Годы жизни: 1 августа 1953 г. - 20 декабря 2000 г."
+      ],
+      quote: "🕊️"
+    },
     natasha: {
       name: "Наташа",
       role: "Мама",
@@ -121,7 +121,7 @@
       facts: [
         "Белая с рыжими пятнами и сердечком на спинке.",
         "Облако из меха.",
-        "Нелегальный мигрант, вор в законе.",
+        "Нелегегальный мигрант, вор в законе.",
         "Корм дороже человеческого.",
         "Обожает расчёску и лежать пузом вверх.",
         "Любит кушать Пашины ноги, пока он спит.",
@@ -145,12 +145,41 @@
     }
   };
 
-  function open(personKey){
+  function setModalImage(personId, personName) {
+    if (!modalImg) return;
+
+    const candidates = [
+      `assets/avatars/${personId}.jpg`,
+      `assets/avatars/${personId}.png`,
+      `assets/avatars/${personId}.webp`,
+    ];
+
+    let i = 0;
+    modalImg.style.display = "block";
+    modalImg.alt = personName || "";
+
+    modalImg.onerror = () => {
+      i += 1;
+      if (i < candidates.length) {
+        modalImg.src = candidates[i];
+      } else {
+        modalImg.removeAttribute("src");
+        modalImg.style.display = "none";
+      }
+    };
+
+    modalImg.src = candidates[0];
+  }
+
+  function open(personKey) {
     const p = DATA[personKey];
     if (!p) return;
 
     nameEl.textContent = p.name;
     roleEl.textContent = p.role;
+
+    // ✅ ВОТ ЭТОГО НЕ ХВАТАЛО:
+    setModalImage(personKey, p.name);
 
     factsEl.innerHTML = `<ul>${p.facts.map(f => `<li>${escapeHtml(f)}</li>`).join("")}</ul>`;
     quoteEl.textContent = p.quote;
@@ -159,12 +188,12 @@
     modal.setAttribute("aria-hidden", "false");
   }
 
-  function close(){
+  function close() {
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
   }
 
-  function escapeHtml(str){
+  function escapeHtml(str) {
     return String(str)
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
@@ -173,11 +202,11 @@
 
   document.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-person]");
-    if (btn){
+    if (btn) {
       open(btn.getAttribute("data-person"));
       return;
     }
-    if (e.target.closest("[data-modal-close]")){
+    if (e.target.closest("[data-modal-close]")) {
       close();
       return;
     }

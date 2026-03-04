@@ -116,7 +116,7 @@
 
 /* пара (Полина слева от Паши) */
 .pos-polina  { left: 18%; top: 460px; transform: translateX(-50%); }
-.pos-heart   { left: 27%; top: 360px; transform: translateX(-50%); }
+.pos-heart   { left: 27%; top: 460px; transform: translateX(-50%); }
 
 /* Птичка ниже пары (по центру между ними) */
 .pos-ptichka { left: 27%; top: 650px; transform: translateX(-50%); }
@@ -233,7 +233,7 @@
 /* Полотно фиксированной ширины: чтобы не обрезалось */
 .tree-grid{
   width: 1220px;           /* ← стало шире, карточки не липнут к рамке */
-  min-height: 760px;       /* можно оставить как было, это просто запас */
+  min-height: 880px;       /* можно оставить как было, это просто запас */
 }
 
 /* Масштаб через CSS-переменную */
@@ -296,4 +296,8 @@
     height: 112px;
     border-radius: 16px;
   }
+  
+}
+.tree-lines{
+  height: 760px; /* ← поставь СТАРОЕ значение min-height (которое было ДО увеличения) */
 }

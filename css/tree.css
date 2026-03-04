@@ -267,3 +267,8 @@
 .person:active{
   transform: translateX(-50%) !important;   /* сохраняем позиционирование */
 }
+
+.avatar .avatar-img { z-index: 1; }
+.avatar .avatar-fallback { z-index: 2; }
+.avatar .avatar-img:not([src=""]) { display: block; }
+.avatar .avatar-img:not([src=""]) + .avatar-fallback { display: none; }

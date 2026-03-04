@@ -103,8 +103,8 @@
 .pos-vladimir  { left: 58%; top: 16px; transform: translateX(-50%); }
 .pos-heart-mv  { left: 50%; top: 44px; transform: translateX(-50%); }
 
-.pos-natasha { left: 45%; top: 270px; transform: translateX(-50%); }
-.pos-valya   { left: 90%; top: 270px; transform: translateX(-50%); }
+.pos-natasha { left: 45%; top: 240px; transform: translateX(-50%); }
+.pos-valya   { left: 90%; top: 240px; transform: translateX(-50%); }
 
 /* дети Наташи */
 .pos-pasha   { left: 36%; top: 460px; transform: translateX(-50%); }

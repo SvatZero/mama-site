@@ -272,3 +272,28 @@
 .avatar .avatar-fallback { z-index: 2; }
 .avatar .avatar-img:not([src=""]) { display: block; }
 .avatar .avatar-img:not([src=""]) + .avatar-fallback { display: none; }
+
+/* ====== Фото в модалке ====== */
+.modal-media{
+  display:flex;
+  justify-content:center;
+  margin: 6px 0 12px;
+}
+
+.modal-img{
+  width: 132px;
+  height: 132px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
+}
+
+@media (max-width: 420px){
+  .modal-img{
+    width: 112px;
+    height: 112px;
+    border-radius: 16px;
+  }
+}

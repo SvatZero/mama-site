@@ -223,14 +223,17 @@
 /* ====== ВЬЮПОРТ ДЛЯ ТЕЛЕФОНА: дерево как карта ====== */
 .tree-viewport{
   width: 100%;
-  overflow: auto;              /* можно скроллить */
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 18px;
+
+  padding: 18px;           /* ← ВОЗДУХ у границ */
+  box-sizing: border-box;
 }
 
 /* Полотно фиксированной ширины: чтобы не обрезалось */
 .tree-grid{
-  width: 1000px;               /* соответствует viewBox SVG */
+  width: 1120px;           /* ← стало шире, карточки не липнут к рамке */
+  min-height: 760px;       /* можно оставить как было, это просто запас */
   max-width: none;
   transform-origin: 0 0;       /* масштабируем от левого верхнего */
   touch-action: pan-x pan-y;   /* не мешаем прокрутке пальцем */

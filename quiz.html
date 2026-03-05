@@ -56,7 +56,7 @@
       </div>
 
       <div style="display:flex; gap:10px; margin-left:auto; align-items:center; flex-wrap:wrap;">
-        <div class="quiz-pill">Отвечено: <span id="answered">0</span>/<span id="total">0</span></div>
+        <div class="quiz-pill">Отвечено: <span id="answered">0</span> / <span id="total">0</span></div>
         <button class="quiz-btn" id="reset" type="button">Сбросить</button>
         <button class="fontbtn" data-font-dec aria-label="Уменьшить шрифт">A−</button>
         <button class="fontbtn" data-font-inc aria-label="Увеличить шрифт">A+</button>
@@ -65,7 +65,6 @@
 
     <section class="card">
       <p class="quiz-hint" id="hint">Выбирай вариант — он подсветится (зелёный/красный).</p>
-
       <div id="quizList" class="quiz-list"></div>
     </section>
 
@@ -85,6 +84,14 @@
         <button class="quiz-btn" id="playAgain" type="button">Сыграть ещё раз</button>
         <a class="quiz-btn ghost" href="games.html">К выбору игр</a>
       </div>
+
+      <hr class="quiz-divider" />
+
+      <div class="quiz-actions">
+        <button class="quiz-btn ghost" id="showAnswers" type="button">Показать правильные ответы</button>
+      </div>
+
+      <div id="answersBox" class="answers-box" hidden></div>
     </section>
 
     <footer class="footer">

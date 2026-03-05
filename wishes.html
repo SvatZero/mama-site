@@ -69,27 +69,51 @@
     </p>
   </section>
 
-    <div class="card">
+<div class="card">
 
-    <h2>Поздравительное видео</h2>
-    
-    <video 
-    controls 
-    poster="assets/video/video-preview.jpg"
-    style="width:100%; border-radius:16px;"
-    >
-    
-    <source src="assets/video/mama-birthday.mp4" type="video/mp4">
-    
-    Ваш браузер не поддерживает видео.
-    
-    </video>
-    
-    <p style="margin-top:10px; color:var(--muted);">
-    Небольшой ролик от всей семьи ❤️
-    </p>
-    
+  <h2>Поздравительное видео</h2>
+
+  <!-- Netflix-style карточка -->
+  <a
+    href="https://rutube.ru/video/private/45694f9149b4c43160f7738976f6edf6/?p=pvRRwTk-Yu3Ab2r6P__tfw"
+    target="_blank"
+    rel="noopener"
+    class="video-card"
+    aria-label="Открыть поздравительное видео на Rutube"
+  >
+    <img
+      src="assets/video/video-preview.jpg"
+      alt="Превью поздравительного видео"
+      class="video-thumb"
+      loading="lazy"
+    />
+
+    <div class="video-overlay">
+      <div class="video-play" aria-hidden="true">▶</div>
+      <div class="video-meta">
+        <div class="video-title">Смотреть поздравление</div>
+        <div class="video-subtitle">Нажми, чтобы открыть на Rutube</div>
+      </div>
     </div>
+  </a>
+
+  <div class="video-actions">
+    <a
+      class="big-button"
+      href="https://rutube.ru/video/private/45694f9149b4c43160f7738976f6edf6/?p=pvRRwTk-Yu3Ab2r6P__tfw"
+      target="_blank"
+      rel="noopener"
+      style="text-align:center;"
+    >
+      ▶ Смотреть на Rutube
+    </a>
+  </div>
+
+  <p style="margin-top:10px; color:var(--muted);">
+    Небольшой ролик от всей семьи ❤️
+  </p>
+
+</div>
 
     <!-- Основной текст -->
   <section class="card">

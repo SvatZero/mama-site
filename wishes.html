@@ -7,6 +7,85 @@
 
   <link rel="stylesheet" href="css/base.css" />
   <link id="theme-style" rel="stylesheet" href="css/theme-spring.css" />
+  <style>
+  .video-card{
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .video-thumb{
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform .25s ease;
+  }
+
+  .video-overlay{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 14px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.10),
+      rgba(0,0,0,0)
+    );
+    gap: 12px;
+  }
+
+  .video-play{
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(6px);
+    font-size: 20px;
+    flex: 0 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+
+  .video-meta{
+    min-width: 0;
+  }
+
+  .video-title{
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.15;
+    color: rgba(255,255,255,.95);
+  }
+
+  .video-subtitle{
+    margin-top: 4px;
+    font-size: 13px;
+    color: rgba(255,255,255,.78);
+  }
+
+  .video-card:hover .video-thumb{
+    transform: scale(1.03);
+  }
+
+  .video-actions{
+    margin-top: 12px;
+    display:flex;
+    justify-content:flex-end;
+  }
+</style>
 </head>
 <body>
   <div class="overlay" data-overlay></div>
